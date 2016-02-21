@@ -26,17 +26,17 @@ public class NumberMatching {
     if (!result.keySet().containsAll(objectives)) {
       // Start with biggest number plus smallest one
       topLoop: for (int j = intList.size() - 1; j >= 0; j--) {
-        // Move up smallest till we make it
+        // Move up smallest till we make found it
         for (int i = 0; i < j; i++) {
           Integer current = intList.get(i) + intList.get(j);
-          // Current bigger than top objective?
+          // Current is bigger than top objective?
           if (current > objectives.get(objectives.size() - 1)) {
             break;
           }
           List<Integer> toRemove = new ArrayList<Integer>();
           for (Integer objective : objectives) {
             if (current == objective) {
-              addResult(objectives, result, intList.get(i), intList.get(j), objective);
+              addResult(result, intList.get(i), intList.get(j), objective);
               toRemove.add(objective);
             }
           }
@@ -51,8 +51,7 @@ public class NumberMatching {
     return result;
   }
 
-  private static void addResult(List<Integer> objectives, Map<Integer, List<Integer>> result, int j, int i,
-      Integer objective) {
+  private static void addResult(Map<Integer, List<Integer>> result, int j, int i, Integer objective) {
     List<Integer> partialResult = createPartialResult(i, j);
     result.put(objective, partialResult);
   }
