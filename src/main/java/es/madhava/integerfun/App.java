@@ -60,9 +60,16 @@ public class App {
     List<Integer> intList = getIntList();
     List<Integer> objectives = getObjectives();
     System.out.println("\nCalculating matching pairs for numbers provided:");
-    Map<Integer, List<Integer>> result = NumberMatching.getMatch(intList, objectives);
+    Map<Integer, List<Integer>> results = NumberMatching.getMatch(intList, objectives);
     // This output could probably be a little bit nicer...
-    System.out.println("Results summary: " + result);
+    System.out.println("Results summary: ");
+    for (Integer number : results.keySet()) {
+      if (results.get(number) != null) {
+        System.out.println(number + ": " + results.get(number));
+      } else {
+        System.out.println(number + ": Cannot find a match.");
+      }
+    }
   }
 
   private List<Integer> getObjectives() {

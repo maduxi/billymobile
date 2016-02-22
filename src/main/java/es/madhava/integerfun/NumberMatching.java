@@ -18,7 +18,7 @@ public class NumberMatching {
 
   public static Map<Integer, List<Integer>> getMatch(List<Integer> intList, List<Integer> objectives) {
     Map<Integer, List<Integer>> result = new HashMap<Integer, List<Integer>>();
-    TreeSet<Integer> sortedInts = new TreeSet<>();
+    TreeSet<Integer> sortedInts = new TreeSet<Integer>();
     sortedInts.addAll(intList);
 
     // Can we make it?
@@ -29,7 +29,6 @@ public class NumberMatching {
         for (Integer objective : objectives) {
           if (sortedInts.contains(objective - intList.get(j))) {
             addResult(result, intList.get(j), objective - intList.get(j), objective);
-            System.out.println(objective + ": " + intList.get(j) + ", " + (objective - intList.get(j)));
             toRemove.add(objective);
           }
         }

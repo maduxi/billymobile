@@ -13,5 +13,5 @@ $ mvn clean package
 ```
 - If compilation is successful, the project is ready to run! Run the it like this:
 ```sh
-$ java -cp ./target/integerFun-*-SNAPSHOT.jar es.madhava.integerfun.App
+$ java -cp ./target/integerFun-1.0.0.jar es.madhava.integerfun.App
 ```
