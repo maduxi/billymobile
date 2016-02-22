@@ -23,7 +23,7 @@ public class NumberMatching {
     // Can we make it?
     addOfflimits(intList, objectives, result);
 
-    if (!result.keySet().containsAll(objectives)) {
+    if (!objectives.isEmpty()) {
       // Start with biggest number plus smallest one
       topLoop: for (int j = intList.size() - 1; j >= 0; j--) {
         // Move up smallest till we make found it
@@ -35,8 +35,9 @@ public class NumberMatching {
           }
           List<Integer> toRemove = new ArrayList<Integer>();
           for (Integer objective : objectives) {
-            if (current == objective) {
+            if (current.equals(objective)) {
               addResult(result, intList.get(i), intList.get(j), objective);
+              System.out.println(objective + ": " + intList.get(i) + ", " + intList.get(j));
               toRemove.add(objective);
             }
           }
@@ -47,6 +48,9 @@ public class NumberMatching {
           }
         }
       }
+    }
+    for (Integer objective : objectives) {
+      result.put(objective, null);
     }
     return result;
   }
