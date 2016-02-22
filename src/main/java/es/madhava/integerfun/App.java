@@ -23,8 +23,10 @@ public class App {
     System.out
         .println("range_small.txt ranges include " + RangeMerge.includedNumbers(rangeSmall) + " diferent numbers.");
     List<Integer[]> rangeLarge = getRanges("range_large.txt");
+    Long start = System.currentTimeMillis();
     System.out
         .println("range_large.txt ranges include " + RangeMerge.includedNumbers(rangeLarge) + " diferent numbers.");
+    System.out.println((System.currentTimeMillis() - start) / 1000.0 + "s");
   }
 
   private List<Integer[]> getRanges(String rangeFile) {

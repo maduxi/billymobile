@@ -18,15 +18,11 @@ public class NumberMatching {
 
   public static Map<Integer, List<Integer>> getMatch(List<Integer> intList, List<Integer> objectives) {
     Map<Integer, List<Integer>> result = new HashMap<Integer, List<Integer>>();
-
     TreeSet<Integer> sortedInts = new TreeSet<>();
     sortedInts.addAll(intList);
 
-    Collections.sort(intList);
-
     // Can we make it?
     addOfflimits(intList, objectives, result);
-
     if (!objectives.isEmpty()) {
       for (int j = 0; j < intList.size(); j++) {
         List<Integer> toRemove = new ArrayList<Integer>();
@@ -57,6 +53,7 @@ public class NumberMatching {
 
   private static void addOfflimits(List<Integer> intList, List<Integer> objectives,
       Map<Integer, List<Integer>> result) {
+    Collections.sort(intList);
     List<Integer> toRemove = new ArrayList<Integer>();
     for (Integer objective : objectives) {
       if (isOffLimits(intList, objective)) {
