@@ -1,7 +1,7 @@
 package es.madhava.integerfun;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,33 +28,27 @@ public class App {
   private List<Integer[]> getRanges(String rangeFile) {
     List<Integer[]> result = new ArrayList<Integer[]>();
     ClassLoader classLoader = getClass().getClassLoader();
-    File file = new File(classLoader.getResource(rangeFile).getFile());
-    try (Scanner scanner = new Scanner(file)) {
-      while (scanner.hasNextLine()) {
-        String line = scanner.nextLine();
-        String[] split = line.split(" ");
-        Integer[] array = { Integer.parseInt(split[0]), Integer.parseInt(split[1]) };
-        result.add(array);
-      }
-      scanner.close();
-    } catch (IOException e) {
-      e.printStackTrace();
+    InputStream file = classLoader.getResourceAsStream(rangeFile);
+    Scanner scanner = new Scanner(file);
+    while (scanner.hasNextLine()) {
+      String line = scanner.nextLine();
+      String[] split = line.split(" ");
+      Integer[] array = { Integer.parseInt(split[0]), Integer.parseInt(split[1]) };
+      result.add(array);
     }
+    scanner.close();
     return result;
   }
 
   private List<Integer> getIntList() {
     List<Integer> intList = new ArrayList<Integer>();
     ClassLoader classLoader = getClass().getClassLoader();
-    File file = new File(classLoader.getResource("int_list.txt").getFile());
-    try (Scanner scanner = new Scanner(file)) {
-      while (scanner.hasNextLine()) {
-        intList.add(Integer.parseInt(scanner.nextLine()));
-      }
-      scanner.close();
-    } catch (IOException e) {
-      e.printStackTrace();
+    InputStream file = classLoader.getResourceAsStream("int_list.txt");
+    Scanner scanner = new Scanner(file);
+    while (scanner.hasNextLine()) {
+      intList.add(Integer.parseInt(scanner.nextLine()));
     }
+    scanner.close();
     return intList;
   }
 
