@@ -16,6 +16,7 @@ public class App {
   }
 
   private void rangeMerge() {
+    System.out.println("Calculating numbers in ranges for files provided:");
     List<Integer[]> rangeSmall = getRanges("range_small.txt");
     System.out
         .println("range_small.txt ranges include " + RangeMerge.includedNumbers(rangeSmall) + " diferent numbers.");
@@ -60,8 +61,10 @@ public class App {
   private void numberMatching() {
     List<Integer> intList = getIntList();
     List<Integer> objectives = getObjectives();
+    System.out.println("\nCalculating matching pairs for numbers provided:");
     Map<Integer, List<Integer>> result = NumberMatching.getMatch(intList, objectives);
-    System.out.println(result);
+    // This output could probably be a little bit nicer...
+    System.out.println("Results summary: " + result);
   }
 
   private List<Integer> getObjectives() {
