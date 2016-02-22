@@ -11,7 +11,9 @@ public class App {
 
   public static void main(String[] args) throws IOException {
     App myApp = new App();
+    Long start = System.currentTimeMillis();
     myApp.numberMatching();
+    System.out.println((System.currentTimeMillis() - start) / 1000.0 + "s");
     myApp.rangeMerge();
   }
 
