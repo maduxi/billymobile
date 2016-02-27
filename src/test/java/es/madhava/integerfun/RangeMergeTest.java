@@ -22,6 +22,14 @@ public class RangeMergeTest {
   }
 
   @Test
+  public void includedNumbersTestLarge() {
+    List<Integer[]> ranges = new ArrayList<Integer[]>();
+    ranges.add(getIntArray(855, 3789));
+    ranges.add(getIntArray(9, 7310));
+    assertEquals("Included 7302 numbers", 7302, RangeMerge.includedNumbers(ranges));
+  }
+
+  @Test
   public void includedNumbersTestSmall() {
     List<Integer[]> ranges = new ArrayList<Integer[]>();
 

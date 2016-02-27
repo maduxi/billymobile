@@ -15,12 +15,18 @@ public class Range {
 
   public boolean merge(Range range) {
     boolean result = false;
-    if ((range.getMax() <= max && range.getMax() >= min) || (range.getMin() >= min && range.getMin() <= max)) {
+    if (shouldMerge(this, range)) {
       min = Math.min(min, range.getMin());
       max = Math.max(max, range.getMax());
       result = true;
     }
     return result;
+  }
+
+  protected static boolean shouldMerge(Range range, Range range2) {
+    return (range.getMax() <= range2.getMax() && range.getMax() >= range2.getMin())
+        || (range.getMin() >= range2.getMin() && range.getMin() <= range2.getMax())
+        || (range.getMin() <= range2.getMin() && range.getMax() >= range2.getMax());
   }
 
   public List<Integer> getNumbers() {
