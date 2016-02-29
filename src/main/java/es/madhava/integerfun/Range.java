@@ -1,8 +1,5 @@
 package es.madhava.integerfun;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Range {
 
   int max;
@@ -29,12 +26,8 @@ public class Range {
         || (range.getMin() <= range2.getMin() && range.getMax() >= range2.getMax());
   }
 
-  public List<Integer> getNumbers() {
-    List<Integer> result = new ArrayList<Integer>();
-    for (int i = min; i <= max; i++) {
-      result.add(i);
-    }
-    return result;
+  public Integer getSize() {
+    return max - min + 1;
   }
 
   public int getMax() {

@@ -6,15 +6,15 @@ import java.util.List;
 public class RangeMerge {
 
   public static int includedNumbers(List<Integer[]> ranges) {
-    List<Integer> numbers = new ArrayList<Integer>();
+    Integer numbers = 0;
     List<Range> rangesList = new ArrayList<Range>();
     for (Integer[] range : ranges) {
       addRange(rangesList, range);
     }
     for (Range range : rangesList) {
-      numbers.addAll(range.getNumbers());
+      numbers += range.getSize();
     }
-    return numbers.size();
+    return numbers;
   }
 
   private static void addRange(List<Range> rangesList, Integer[] rangeArray) {
